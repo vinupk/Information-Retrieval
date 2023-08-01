@@ -1,5 +1,5 @@
 # Text to Image Search engine
-This project done as part of carriculm project to demonstrate comprehensive understanding and practical application of various concepts and techniques related to information retrieval.
+This project done as part of carriculm assignment to demonstrate comprehensive understanding and practical application of various concepts and techniques related to information retrieval.
 
 ## Objective 
 Objective is to building an efficient and accurate Text to image search engine system. I explored ANNOTATION, INDEXING, RETRIEVAL, EVALUATION.
