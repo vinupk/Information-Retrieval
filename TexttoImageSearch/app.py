@@ -112,9 +112,8 @@ def search_images_by_text(text_query, image_index, image_ids):
     
   return top_similarities
 
-# Replace this with your actual image search and retrieval logic
+# Image search and retrieval logic
 def perform_image_search(query):
-
     csv_file = './reverse_image_search/reverse_image_search.csv'
     image_index, image_ids = build_image_index(csv_file)
     search_results = search_images_by_text(query, image_index, image_ids)
@@ -122,15 +121,6 @@ def perform_image_search(query):
     for image_id, similarity in search_results:
         result = {'url' : image_index[image_id]['path'], 'title': image_index[image_id]['path'].split('/')[-1].split('.')[0] }
         results.append(result)
-
-    # Implement your image search and retrieval logic here
-    # Return a list of image URLs or other relevant information
-    # based on the given query
-    #results = [
-    #    {'url': 'https://example.com/image1.jpg', 'title': 'Image 1'},
-    #    {'url': 'https://example.com/image2.jpg', 'title': 'Image 2'},
-        # Add more search results here
-    #]
     return results
 @app.route('/')
 def index():
