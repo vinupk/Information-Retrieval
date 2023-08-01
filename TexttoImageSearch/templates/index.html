@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Search Engine</title>
+	    <style>
+        /* CSS for the image container */
+        #searchResults {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* CSS for the individual image elements */
+        #searchResults img {
+            max-width: 200px; /* Adjust this value to change the maximum width of images */
+            max-height: 200px; /* Adjust this value to change the maximum height of images */
+            margin: 5px; /* Add some spacing between images */
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Search Engine</h1>
+    <form id="searchForm">
+        <label for="query">Enter your search query:</label>
+        <input type="text" id="query" name="q" placeholder="e.g., nature, cats, beach" required>
+        <button type="submit">Search</button>
+    </form>
+	<!-- Display search results here -->
+    <div id="searchResults">
+        <!-- Results will be populated dynamically using JavaScript -->
+    </div>
+    <script>
+	// JavaScript for handling search form submission and displaying results
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const query = document.getElementById('query').value;
+            fetch(`/search?q=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Process the search results and display them in the 'searchResults' div
+                    const resultsDiv = document.getElementById('searchResults');
+                    resultsDiv.innerHTML = ''; // Clear previous results
+                    if (data.length === 0) {
+                        resultsDiv.innerHTML = '<p>No results found.</p>';
+                    } else {
+                        data.forEach(image => {
+                            // Create a new image element and append it to the resultsDiv
+                            const imgElement = document.createElement('img');
+                            imgElement.src = image.url;
+                            imgElement.alt = image.title;
+                            resultsDiv.appendChild(imgElement);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
