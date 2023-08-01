@@ -1,4 +1,4 @@
-# Information Retrieval System
+# Text to Image Search engine
 The purpose of this project done as part of carriculm project to demonstrate comprehensive understanding and practical application of various concepts and techniques related to information retrieval.
 
 ## Objective 
